@@ -1,0 +1,42 @@
+{
+  "exam": "SAP-C02",
+  "topic": "Security & Compliance",
+  "questions": [
+    {
+      "id": "sec-001",
+      "question": "You must isolate PCI workloads while sharing baseline services (logging, directory, DNS) with non-PCI apps. Which design is strongest?",
+      "options": [
+        "Single VPC with security groups",
+        "Dedicated accounts for PCI and shared services with AWS Organizations SCPs",
+        "Two subnets in one VPC with NACLs",
+        "VPC peering between PCI and non-PCI subnets"
+      ],
+      "correctIndex": 1,
+      "explanation": "Separate accounts enforce blast radius and clearer guardrails; SCPs plus shared services (logging, DNS) accounts keep boundaries explicit."
+    },
+    {
+      "id": "sec-002",
+      "question": "A data lake needs encryption at rest, key rotation, and least privilege for analytics jobs. Which KMS strategy aligns best?",
+      "options": [
+        "Use the AWS managed S3 key (SSE-S3)",
+        "One customer managed CMK per account with automatic rotation, scoped IAM policies",
+        "A single CMK shared across prod and non-prod buckets",
+        "Client-side encryption only"
+      ],
+      "correctIndex": 1,
+      "explanation": "Customer managed CMKs with rotation and scoped IAM provide granular access control and auditable key use for regulated workloads."
+    },
+    {
+      "id": "sec-003",
+      "question": "You need workload identities to access AWS APIs without long-lived keys from an external OIDC provider. Best option?",
+      "options": [
+        "Store access keys in Secrets Manager",
+        "IAM roles with OIDC identity provider and role assumption",
+        "Create IAM users with MFA only",
+        "Use instance profiles exclusively"
+      ],
+      "correctIndex": 1,
+      "explanation": "Setting an IAM OIDC identity provider and assuming roles removes static keys and uses short-lived credentials tied to external identities."
+    }
+  ]
+}

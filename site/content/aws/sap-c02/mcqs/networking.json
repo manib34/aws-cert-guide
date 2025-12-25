@@ -1,0 +1,42 @@
+{
+  "exam": "SAP-C02",
+  "topic": "Networking & Edge",
+  "questions": [
+    {
+      "id": "net-001",
+      "question": "A global application needs static IPs, low-latency routing, and fast failover between Regions. Which service best fits?",
+      "options": [
+        "Elastic Load Balancer with cross-zone disabled",
+        "CloudFront + AWS Global Accelerator",
+        "Route 53 latency records only",
+        "Direct Connect with BGP communities"
+      ],
+      "correctIndex": 1,
+      "explanation": "Global Accelerator provides anycast static IPs, health-based failover, and accelerates to the closest edge; pairing with CloudFront handles cached content."
+    },
+    {
+      "id": "net-002",
+      "question": "You need deterministic, low-jitter connectivity from on-prem to multiple VPCs with minimal AWS management overhead. What is the best pattern?",
+      "options": [
+        "VPN over the internet to each VPC",
+        "VPC peering mesh across all VPCs",
+        "Transit Gateway attached to a Direct Connect gateway",
+        "PrivateLink endpoints in each VPC for on-prem"
+      ],
+      "correctIndex": 2,
+      "explanation": "Transit Gateway with a DX gateway centralizes connectivity, scales, and reduces operational complexity while meeting performance needs."
+    },
+    {
+      "id": "net-003",
+      "question": "Which approach reduces latency for API calls from South America users to a single us-east-1 backend without creating a new Region?",
+      "options": [
+        "Add Route 53 health checks",
+        "Enable CloudFront with regional edge caches",
+        "Move the API to us-west-2",
+        "Enable S3 Transfer Acceleration"
+      ],
+      "correctIndex": 1,
+      "explanation": "CloudFront with regional edge caches accelerates dynamic and static delivery by terminating TLS closer to users and reusing edge connections."
+    }
+  ]
+}

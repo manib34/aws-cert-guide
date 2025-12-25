@@ -1,11 +1,195 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const tracks = [
+  {
+    title: "High Availability",
+    href: "/aws/sap-c02/high-availability",
+    blurb: "Design resilient stacks with graceful failover and minimal ops overhead.",
+    badge: "SAP-C02",
+  },
+  {
+    title: "Networking & Edge",
+    href: "/aws/sap-c02/networking",
+    blurb: "Global acceleration, hybrid routing, and deterministic connectivity patterns.",
+    badge: "SAP-C02",
+  },
+  {
+    title: "Security & Compliance",
+    href: "/aws/sap-c02/security",
+    blurb: "Identity, encryption, and governance moves that shrink blast radius.",
+    badge: "SAP-C02",
+  },
+];
 ---
-<html>
-  <head>
-    <title>AWS Exam Guide</title>
-  </head>
-  <body>
-    <h1>AWS Certification Guide</h1>
-    <p>Open source AWS exam preparation</p>
-  </body>
-</html>
+
+<BaseLayout
+  title="AWS Cert Lab"
+  description="Modern practice deck for AWS certification scenarios."
+  currentExam="sap-c02"
+>
+  <section class="surface hero">
+    <div class="eyebrow">AWS Cert Lab</div>
+    <h1>Scenario-first drills for AWS certifications</h1>
+    <p class="lede">
+      Move beyond memorization. Test yourself with focused MCQs, clean explanations, and a layout that
+      keeps you in flow.
+    </p>
+    <div class="cta-row">
+      <a class="primary" href="/aws/sap-c02/high-availability">Start with High Availability</a>
+      <span class="chip">New: Networking & Security decks</span>
+    </div>
+  </section>
+
+  <section class="grid">
+    {tracks.map((track) => (
+      <a class="card track" href={track.href}>
+        <div class="card-top">
+          <span class="pill">{track.badge}</span>
+          <span class="badge">MCQ drills</span>
+        </div>
+        <h2>{track.title}</h2>
+        <p class="muted">{track.blurb}</p>
+        <div class="go">Open deck →</div>
+      </a>
+    ))}
+  </section>
+
+  <section class="surface tips">
+    <div>
+      <p class="eyebrow">How to use</p>
+      <ul>
+        <li>Answer fast; explanations appear instantly so you can calibrate intuition.</li>
+        <li>Track your streak; reset anytime to simulate a timed block.</li>
+        <li>Use edge-focused decks before labs to wire in the right defaults.</li>
+      </ul>
+    </div>
+    <div class="pillars">
+      <div class="mini">
+        <h3>Scenario-first</h3>
+        <p class="muted">Each question encodes a real architectural tension—operational overhead, blast radius, or latency.</p>
+      </div>
+      <div class="mini">
+        <h3>Concise UI</h3>
+        <p class="muted">No clutter, just clean cards, readable fonts, and quick feedback loops.</p>
+      </div>
+      <div class="mini">
+        <h3>Extendable</h3>
+        <p class="muted">Drop in new JSON under <code>site/content/aws/sap-c02/mcqs</code> and mirror the page under <code>site/src/pages/aws/sap-c02</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hero h1 {
+      margin: 10px 0 14px;
+      letter-spacing: -0.03em;
+      font-size: clamp(30px, 5vw, 48px);
+      max-width: 760px;
+    }
+    .hero .lede {
+      color: var(--muted);
+      max-width: 720px;
+      line-height: 1.6;
+      margin: 0 0 18px;
+    }
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      color: #05060a;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      box-shadow: var(--shadow);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 22px 0;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 18px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.12s ease, border 0.12s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(109, 236, 185, 0.8);
+    }
+    .track h2 {
+      margin: 12px 0 6px;
+      letter-spacing: -0.01em;
+    }
+    .muted {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .badge {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .go {
+      margin-top: 14px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .tips {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 18px;
+    }
+    .tips ul {
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .mini {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 14px;
+    }
+    .mini h3 {
+      margin: 0 0 6px;
+    }
+    code {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 6px;
+      border-radius: 6px;
+      color: var(--accent);
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      .tips {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

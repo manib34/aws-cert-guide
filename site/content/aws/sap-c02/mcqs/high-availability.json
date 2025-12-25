@@ -1,0 +1,42 @@
+{
+  "exam": "SAP-C02",
+  "topic": "High Availability",
+  "questions": [
+    {
+      "id": "ha-001",
+      "question": "Which AWS architecture provides high availability with minimal operational overhead?",
+      "options": [
+        "Single AZ with Auto Scaling",
+        "Multi-AZ behind an Application Load Balancer",
+        "Multi-region active-active",
+        "Scheduled backups"
+      ],
+      "correctIndex": 1,
+      "explanation": "Multi-AZ with an ALB provides high availability within a region while keeping operational complexity low."
+    },
+    {
+      "id": "ha-002",
+      "question": "You need active-passive failover across Regions with the lowest steady-state cost. What should you choose?",
+      "options": [
+        "Global Accelerator with two active endpoints",
+        "Route 53 failover records pointing to a warm standby stack",
+        "Active-active stacks behind an anycast IP",
+        "S3 Multi-Region Access Points"
+      ],
+      "correctIndex": 1,
+      "explanation": "Route 53 failover with a warm standby minimizes cost while enabling health-based DNS failover to a passive Region."
+    },
+    {
+      "id": "ha-003",
+      "question": "A production Aurora MySQL cluster must survive AZ failure with zero data loss. What is the simplest setup?",
+      "options": [
+        "Single-AZ Aurora cluster",
+        "Aurora cluster spanning at least 2 AZs with reader endpoints",
+        "Aurora Global Database with secondary Region",
+        "Read replica in another account"
+      ],
+      "correctIndex": 1,
+      "explanation": "Aurora automatically replicates 6 copies across 3 AZs; a multi-AZ cluster with readers handles AZ failure without data loss."
+    }
+  ]
+}
